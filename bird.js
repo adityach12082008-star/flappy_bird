@@ -1,13 +1,13 @@
 const r = require("raylib");
 
 function createBird(x,screenWidth, width, height, birdVelocity, color) {
-const y = screenWidth / 2;
-const velocity = 0;
-const started = false;
+  const y = screenWidth / 2;
+  const velocity = 0;
+  const isStarted = false;
 
   const rec = { x, y, width, height };
  
-  return { rec, color,birdVelocity,velocity,started};
+  return { rec, color,birdVelocity,velocity,isStarted};
 }
 
 function drawBird(bird) {
@@ -16,12 +16,12 @@ function drawBird(bird) {
 
 function jump(bird,gravity,dt){
 
-//  console.log(bird.velocity);
-  if(r.IsKeyPressed(r.KEY_SPACE)){ bird.velocity = bird.birdVelocity;
-bird.started = true;
+  if(r.IsKeyPressed(r.KEY_SPACE)){ 
+    bird.velocity = bird.birdVelocity;  
+    bird.isStarted = true;
   }
 
-  if(bird.started){
+  if(bird.isStarted){
   bird.rec.y -= bird.velocity *dt;
   bird.velocity -= gravity * dt;
   }
